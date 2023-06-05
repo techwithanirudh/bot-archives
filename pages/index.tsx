@@ -1,57 +1,52 @@
-import Link from "@/components/Link";
-import { PageSEO } from "@/components/SEO";
-import Tag from "@/components/Tag";
-import siteMetadata from "@/data/siteMetadata";
-import { getAllTags } from "@/lib/tags";
-import kebabCase from "@/lib/utils/kebabCase";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import Link from '@/components/Link'
+import { PageSEO } from '@/components/SEO'
+import Tag from '@/components/Tag'
+import siteMetadata from '@/data/siteMetadata'
+import { getAllTags } from '@/lib/tags'
+import kebabCase from '@/lib/utils/kebabCase'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 
 export const getStaticProps: GetStaticProps<{
-  tags: Record<string, number>,
+  tags: Record<string, number>
 }> = async () => {
-  const tags = await getAllTags("blog");
+  const tags = await getAllTags('blog')
 
-  return { props: { tags } };
-};
+  return { props: { tags } }
+}
 
-export default function Home({
-  tags,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a]);
+export default function Home({ tags }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
   const descriptions = [
     {
-      name: "AnirudhGPT",
+      name: 'AnirudhGPT',
       description:
-        "A AI Comment Bot created by Anirudh Sriram. It uses the GPT-3.5 model to generate responses based on the question.",
+        'A AI Comment Bot created by Anirudh Sriram. It uses the GPT-3.5 model to generate responses based on the question.',
     },
     {
-      name: "PikaBot2005",
+      name: 'PikaBot2005',
       description:
-        "A bot created by PikachuB2005. It uses the GPT-3.5 model to generate responses based on the question.",
+        'A bot created by PikachuB2005. It uses the GPT-3.5 model to generate responses based on the question.',
     },
     {
-      name: "gdaybot",
+      name: 'gdaybot',
       description:
-        "A bot created by CodingMaster398. It uses the GPT-3.5 model to generate responses based on the question.",
+        'A bot created by CodingMaster398. It uses the GPT-3.5 model to generate responses based on the question.',
     },
-  ];
+  ]
   return (
     <>
-      <PageSEO
-        title={`Home - ${siteMetadata.title}`}
-        description="Things I blog about"
-      />
-      <div className="flex flex-col items-start justify-start divide-y divide-gray-200 dark:divide-gray-700 w-full">
+      <PageSEO title={`Home - ${siteMetadata.title}`} description="Things I blog about" />
+      <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="pt-6 pb-8 space-x-2 md:space-y-5">
-          <h1 className="mono-type text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 md:px-6">
+          <h1 className="mono-type text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             BOTS
           </h1>
         </div>
-        <div className="flex flex-col space-y-4 py-3 w-full">
-          {Object.keys(tags).length === 0 && "No bots found."}
+        <ul className="flex flex-col space-y-4 py-3 w-full">
+          {Object.keys(tags).length === 0 && 'No bots found.'}
           {sortedTags.map((t) => {
             return (
-              <div
+              <li
                 key={t}
                 className="flex flex-col sm:flex-row items-center justify-between w-full px-8 pt-10 pb-7 rounded-xl border border-gray-200 dark:border-gray-700 relative"
               >
@@ -73,26 +68,23 @@ export default function Home({
                     {/* Get the descrptions from dict */}
                     {descriptions.map((d) => {
                       if (d.name.toLowerCase() === t.toLowerCase()) {
-                        return d.description;
+                        return d.description
                       }
                     })}
                   </p>
                 </div>
                 <div>
-                  <Link
-                    href={`/bots/${kebabCase(t)}`}
-                    className="hover:underline"
-                  >
+                  <Link href={`/bots/${kebabCase(t)}`} className="hover:underline">
                     <button className="bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 font-semibold rounded-lg text-gray-700 py-2 px-4 hidden md:block">
                       View Bot
                     </button>
                   </Link>
                 </div>
-              </div>
-            );
+              </li>
+            )
           })}
-        </div>
+        </ul>
       </div>
     </>
-  );
+  )
 }

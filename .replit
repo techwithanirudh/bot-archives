@@ -1,4 +1,4 @@
-run = "npm run start"
+run = "npm run serve"
 hidden = [".build", ".config", ".vscode", ".husky", ".next", ".github", ".eslintignore", ".gitignore", ".gitattributes", ".eslintrc.js"]
 
 [packager]
