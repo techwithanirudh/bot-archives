@@ -1,6 +1,9 @@
-# Austin's Blog [https://blog.r00ks.io](https://blog.r00ks.io)
+# Bot Archives
 
 Forked from the excellent [Tailwind Nextjs Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)
+
+## About
+A hand-picked assortment of fascinating and witty responses from various AI comment bots that populate Replit.
 
 ## Stack
 

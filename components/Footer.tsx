@@ -23,7 +23,7 @@ export default function Footer() {
           <div>{`© ${new Date().getFullYear()}`}</div>
           <div>{` • `}</div>
           <Link
-            href="https://github.com/Austionian/blog.r00ks"
+            href="https://github.com/techwithanirudh/bot-archives"
             className="hover:text-primary-600 dark:hover:text-primary-400"
           >
             Source Code

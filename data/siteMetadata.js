@@ -2,7 +2,7 @@ const siteMetadata = {
   title: 'Bot Archives',
   author: 'Anirudh Sriram',
   headerTitle: 'Bot Archives',
-  description: 'A archive of conversations from different AI Comment Bots on Replit.',
+  description: 'A hand-picked assortment of fascinating and witty responses from various AI comment bots that populate Replit.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://bot-archives.techwithanirudh.repl.co',
